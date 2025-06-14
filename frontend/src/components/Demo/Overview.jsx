@@ -31,14 +31,15 @@ function Overview(data) {
           {res.debts.length > 0 ? (
             <table>
               <tbody>
-                <th>Account Name</th>
-                <th>Balance</th>
-                <th>Interest Rate</th>
-                {
+                <tr className="labels">
+                  <th>Account Name</th>
+                  <th>Balance</th>
+                  <th>Interest Rate</th>
                   <th>% Change</th>
-                  /* <th>Weekly Payment</th>
-                <th>Until Payoff</th> */
-                }
+                </tr>
+
+                {/* <th>Weekly Payment</th>
+                <th>Until Payoff</th> */}
                 {debtsSort.map((d) => {
                   return <OverviewDebts data={d} key={d._id} />;
                 })}
@@ -57,14 +58,16 @@ function Overview(data) {
           {res.investments.length > 0 ? (
             <table>
               <tbody>
-                <th>Account Name</th>
-                <th>Balance</th>
-                <th>% Change</th>
-                {
+                <tr className="labels">
+                  <th>Account Name</th>
+                  <th>Balance</th>
+                  <th>% Change</th>
+
                   <th>Weekly Investment</th>
-                  /* <th>52 Week Balance</th>
-                <th>Possible Balance At 65</th> */
-                }
+                </tr>
+
+                {/* <th>52 Week Balance</th>
+                <th>Possible Balance At 65</th> */}
                 {investmentsSort.map((d) => {
                   return <OverviewInvestemnts data={d} key={d._id} />;
                 })}

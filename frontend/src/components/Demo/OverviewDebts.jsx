@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function OverviewDebts(data) {
   console.log(data);
   const d = data.data;
@@ -18,19 +20,28 @@ function OverviewDebts(data) {
 
   return (
     <tr key={d._id}>
-      <td>{d.account_name}</td>
-      <td>$ {remaining}</td>
-      <td>{d.interest}%</td>
-      <td
-        className={
-          percentage > 0
-            ? "positive"
-            : percentage === 0
-            ? "neutral"
-            : "negative"
-        }
-      >
-        {percentage}%
+      <td to={`/demo/debts/${d._id}`}>
+        <Link>{d.account_name}</Link>
+      </td>
+      <td>
+        <Link to={`/demo/debts/${d._id}`}>$ {remaining}</Link>
+      </td>
+      <td>
+        <Link to={`/demo/debts/${d._id}`}>{d.interest}%</Link>
+      </td>
+      <td>
+        <Link
+          className={
+            percentage > 0
+              ? "positive"
+              : percentage === 0
+              ? "neutral"
+              : "negative"
+          }
+          to={`/demo/debts/${d._id}`}
+        >
+          {percentage}%
+        </Link>
       </td>
       {/* <td>$ {d.weekly_payment}</td>
       <td>

@@ -3,10 +3,11 @@ $accent: #35ffc6;
 
 .home-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: $bg;
   display: flex;
   flex-direction: column;
+  padding-bottom: 5vh;
 
   span {
     color: $accent;
@@ -39,11 +40,31 @@ $accent: #35ffc6;
   table {
     width: 100%;
     table-layout: fixed;
+
+    a {
+      display: flex;
+    }
     th {
       text-align: left;
     }
     tr {
       height: 50px;
+
+      &:hover {
+        // background: red;
+        cursor: pointer;
+        background: #101010;
+      }
+    }
+    .labels {
+      &:hover {
+        cursor: default;
+        color: #fff;
+
+        &:hover {
+          background: transparent;
+        }
+      }
     }
 
     .positive {
@@ -54,6 +75,18 @@ $accent: #35ffc6;
     }
     .neutral {
       color: #969696;
+    }
+
+    tr {
+      a {
+        text-decoration: none;
+        color: #fff;
+
+        &:hover {
+          // background: red;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

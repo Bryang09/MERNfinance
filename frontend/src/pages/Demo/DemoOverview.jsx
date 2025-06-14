@@ -1,5 +1,6 @@
-import Overview from "../components/Overview";
-import "../styles/demo.scss";
+import Overview from "../../components/Demo/Overview";
+import NavDemo from "../../components/Nav";
+import "../../styles/demo.scss";
 
 function Demo() {
   const User = {
@@ -94,18 +95,21 @@ function Demo() {
     ],
   };
   return (
-    <div className="home-container">
-      <div className="overview-container">
-        <h1>
-          Hello, <span>{User.name}.</span>
-        </h1>
-      </div>
+    <>
+      <NavDemo />
+      <div className="home-container">
+        <div className="overview-container">
+          <h1>
+            Hello, <span>{User.name}.</span>
+          </h1>
+        </div>
 
-      <div className="overview">
-        <h2>Account Overview</h2>
-        <Overview data={User} type="Debt" />
+        <div className="overview">
+          <h2>Account Overview</h2>
+          <Overview data={User} type="Debt" />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

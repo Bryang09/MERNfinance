@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+
 function OverviewInvestemnts(data) {
   const d = data.data;
 
@@ -29,26 +31,36 @@ function OverviewInvestemnts(data) {
     return res;
   }
 
-  getInvestment();
   return (
+    // <Link>
     <tr key={d._id}>
-      <td>{d.account_name}</td>
-      <td>${d.current_balance}</td>
-      <td
-        className={
-          percentage > 0
-            ? "positive"
-            : percentage === 0
-            ? "neutral"
-            : "negative"
-        }
-      >
-        {percentage}%
+      <td>
+        <Link to={`/demo/investments/${d._id}`}>{d.account_name}</Link>
       </td>
-      <td>$ {d.weekly_investment}</td>
+      <td>
+        <Link to={`/demo/investments/${d._id}`}>${d.current_balance}</Link>
+      </td>
+      <td>
+        <Link
+          to={`/demo/investments/${d._id}`}
+          className={
+            percentage > 0
+              ? "positive"
+              : percentage === 0
+              ? "neutral"
+              : "negative"
+          }
+        >
+          {percentage}%
+        </Link>
+      </td>
+      <td>
+        <Link to={`/demo/investments/${d._id}`}>$ {d.weekly_investment}</Link>
+      </td>
       {/*  <td>$ {yearly}</td>
       <td>$ {getInvestment()}</td> */}
     </tr>
+    // </Link>
   );
 }
 
