@@ -1,0 +1,56 @@
+$create-account: #2ba0ff;
+$view-demo: #ff2bdc;
+$bg: #071424;
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $bg;
+
+  .landing-container {
+    width: 80vw;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .links {
+      display: flex;
+
+      h5 {
+        margin: 0 10px;
+        padding: 15px 20px;
+        border-radius: 20px;
+        transition: 1s ease-in-out;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+
+      #create-account {
+        border: 1px solid $create-account;
+
+        &:hover {
+          background: $create-account;
+          cursor: pointer;
+        }
+      }
+
+      #view-demo {
+        border: 1px solid $view-demo;
+
+        &:hover {
+          background: $view-demo;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
