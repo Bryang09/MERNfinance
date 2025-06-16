@@ -10,11 +10,11 @@ function NavDemo() {
       </NavLink>
       <nav>
         <ul>
-          <NavLink to="/demo">
+          <NavLink to="/demo" end>
             <li>Overview</li>
           </NavLink>
-          <NavLink to="/demo/expenses">
-            <li>Expenses</li>
+          <NavLink to="/demo/transactions">
+            <li>Transactions</li>
           </NavLink>
           <NavLink to="/demo/settings">
             <li>Settings</li>
