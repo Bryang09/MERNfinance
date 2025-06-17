@@ -23,11 +23,12 @@ function DemoAddTransaction(user) {
     const acc = account == "Other" ? newAccount : account;
     const tr = {
       transaction_account: acc,
-      transaction_amount: amount,
+      transaction_amount: parseInt(amount),
       transaction_name: name,
       transaction_type: category,
     };
     user.newTransactions(tr);
+    e.target.reset();
   };
   return (
     <div className="transaction-container">
@@ -74,7 +75,7 @@ function DemoAddTransaction(user) {
               onChange={(e) => setAccount(e.target.value)}
               required
             >
-              <option disabled defaultValue={""}></option>
+              <option disabled selected defaultChecked></option>
               {result.map((t, i) => {
                 return (
                   <option value={t.transaction_account} key={i}>

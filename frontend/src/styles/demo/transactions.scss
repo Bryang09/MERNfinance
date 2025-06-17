@@ -96,26 +96,43 @@ $accent: #35ffc6;
 
 .show-transactions-container {
   border: 1px solid #eee;
+  background: #fff;
+  padding: 3vh 1vw;
   width: 90vw;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  margin: 5vh 0;
+
+  h4 {
+    color: #333;
+    align-self: flex-start;
+  }
 
   justify-content: center;
   //   margin-top: 10vh;
 
   .show-transactions {
     padding-left: 20px;
+    background: #101010;
   }
 
   table {
     width: 100%;
     table-layout: fixed;
 
+    td {
+      text-transform: capitalize;
+    }
+
     a {
       display: flex;
     }
     th {
       text-align: left;
+    }
+    .over {
+      color: #ff005f;
     }
     tr {
       height: 50px;
@@ -125,6 +142,9 @@ $accent: #35ffc6;
         cursor: pointer;
         background: #101010;
       }
+    }
+    tfoot {
+      width: 100%;
     }
     .labels {
       &:hover {
