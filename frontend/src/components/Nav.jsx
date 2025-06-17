@@ -16,6 +16,9 @@ function NavDemo() {
           <NavLink to="/demo/transactions">
             <li>Transactions</li>
           </NavLink>
+          <NavLink to="/demo/debt">
+            <li>Debts</li>
+          </NavLink>
           <NavLink to="/demo/settings">
             <li>Settings</li>
           </NavLink>
