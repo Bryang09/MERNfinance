@@ -1,92 +1,92 @@
-$bg: #071424;
-$accent: #35ffc6;
+// $bg: #071424;
+// $accent: #35ffc6;
 
-.home-container {
-  width: 100vw;
-  min-height: 100vh;
-  background: $bg;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 5vh;
+// .home-container {
+//   width: 100vw;
+//   min-height: 100vh;
+//   background: $bg;
+//   display: flex;
+//   flex-direction: column;
+//   padding-bottom: 5vh;
 
-  span {
-    color: $accent;
-  }
-}
+//   span {
+//     color: $accent;
+//   }
+// }
 
-.overview-container {
-  padding-left: 10vw;
-  display: flex;
-  flex-direction: column;
-}
-.overview {
-  width: 80vw;
-  background: #fff;
-  color: #333;
-  margin-left: 10vw;
-  padding: 3vh 3vw;
-  border-radius: 20px;
-}
-.overview-section {
-  background: #1e1e1e;
-  color: #fff;
-  padding: 3vh 3vw;
-  margin: 3vh 0;
+// .overview-container {
+//   padding-left: 10vw;
+//   display: flex;
+//   flex-direction: column;
+// }
+// .overview {
+//   width: 80vw;
+//   background: #fff;
+//   color: #333;
+//   margin-left: 10vw;
+//   padding: 3vh 3vw;
+//   border-radius: 20px;
+// }
+// .overview-section {
+//   background: #1e1e1e;
+//   color: #fff;
+//   padding: 3vh 3vw;
+//   margin: 3vh 0;
 
-  h3 {
-    padding: 3vh 0;
-  }
+//   h3 {
+//     padding: 3vh 0;
+//   }
 
-  table {
-    width: 100%;
-    table-layout: fixed;
+//   table {
+//     width: 100%;
+//     table-layout: fixed;
 
-    a {
-      display: flex;
-    }
-    th {
-      text-align: left;
-    }
-    tr {
-      height: 50px;
+//     a {
+//       display: flex;
+//     }
+//     th {
+//       text-align: left;
+//     }
+//     tr {
+//       height: 50px;
 
-      &:hover {
-        // background: red;
-        cursor: pointer;
-        background: #101010;
-      }
-    }
-    .labels {
-      &:hover {
-        cursor: default;
-        color: #fff;
+//       &:hover {
+//         // background: red;
+//         cursor: pointer;
+//         background: #101010;
+//       }
+//     }
+//     .labels {
+//       &:hover {
+//         cursor: default;
+//         color: #fff;
 
-        &:hover {
-          background: transparent;
-        }
-      }
-    }
+//         &:hover {
+//           background: transparent;
+//         }
+//       }
+//     }
 
-    .positive {
-      color: $accent;
-    }
-    .negative {
-      color: #ff3539;
-    }
-    .neutral {
-      color: #969696;
-    }
+//     .positive {
+//       color: $accent;
+//     }
+//     .negative {
+//       color: #ff3539;
+//     }
+//     .neutral {
+//       color: #969696;
+//     }
 
-    tr {
-      a {
-        text-decoration: none;
-        color: #fff;
+//     tr {
+//       a {
+//         text-decoration: none;
+//         color: #fff;
 
-        &:hover {
-          // background: red;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
+//         &:hover {
+//           // background: red;
+//           cursor: pointer;
+//         }
+//       }
+//     }
+//   }
+// }

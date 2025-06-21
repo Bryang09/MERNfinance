@@ -1,6 +1,7 @@
 import Overview from "../../components/Demo/Overview";
 import NavDemo from "../../components/Nav";
-import "../../styles/demo.scss";
+// import "../../styles/demo.scss";
+import "../../styles/demo/overview2.scss";
 import { User } from "./User";
 
 function Demo() {

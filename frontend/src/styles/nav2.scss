@@ -1,0 +1,36 @@
+$accent: #35ffc6;
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  background-color: #1d1d1d;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+
+  ul {
+    list-style: none;
+
+    li {
+      margin: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      transition: 0.5s ease;
+
+      &:hover {
+        color: $accent;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .active {
+    color: $accent;
+  }
+}

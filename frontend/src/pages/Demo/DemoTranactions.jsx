@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import NavDemo from "../../components/Nav";
 import "../../styles/demo/transactions.scss";
 import "../../styles/demo.scss";
-import DemoAddTransaction from "./DemoAddTransaction";
+import DemoAddTransaction from "../../components/DemoAddTransaction";
 import { User } from "./User";
-import DemoTransactionResults from "./DemoTransactionResults";
+import DemoTransactionResults from "../../components/DemoTransactionResults";
 
 function DemoTransaction() {
   console.log(User);
@@ -75,24 +75,26 @@ function DemoTransaction() {
             newTransactions={newTransactions}
             transaction={transaction}
           />
-          <DemoTransactionResults
-            type="Wants"
-            transaction={transaction}
-            totalAmount={totalWant}
-            total={wants}
-          />
-          <DemoTransactionResults
-            type="Needs"
-            transaction={transaction}
-            totalAmount={totalNeed}
-            total={needs}
-          />
-          <DemoTransactionResults
-            type="Debt"
-            transaction={transaction}
-            totalAmount={totDebt}
-            total={debt}
-          />
+          <div className="container">
+            <DemoTransactionResults
+              type="Wants"
+              transaction={transaction}
+              totalAmount={totalWant}
+              total={wants}
+            />
+            <DemoTransactionResults
+              type="Needs"
+              transaction={transaction}
+              totalAmount={totalNeed}
+              total={needs}
+            />
+            <DemoTransactionResults
+              type="Debt"
+              transaction={transaction}
+              totalAmount={totDebt}
+              total={debt}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,14 @@
+$accent: #35ffc6;
+
+.home-container {
+  position: relative;
+  left: 300px;
+  width: calc(100vw - 300px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  h1 span {
+    color: $accent;
+  }
+}

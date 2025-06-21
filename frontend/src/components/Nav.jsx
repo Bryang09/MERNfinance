@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 
-import "../styles/nav.scss";
+// import "../styles/nav.scss";
+import "../styles/nav2.scss";
 
 function NavDemo() {
   return (
     <header>
-      <NavLink to="/">
+      {/* <NavLink to="/">
         <h5 id="nav-title">nav</h5>
-      </NavLink>
+      </NavLink> */}
       <nav>
         <ul>
           <NavLink to="/demo" end>
