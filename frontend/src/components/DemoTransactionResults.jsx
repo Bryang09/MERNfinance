@@ -5,44 +5,38 @@ function DemoTransactionResults(tr) {
   console.log(tr);
   return (
     <div className="show-transactions-container">
-      <h4>{type}</h4>
+      <h3>{type}</h3>
       <div className="show-transactions">
-        {/* <table>
-          <tbody> */}
-        <ul className="headers">
-          <li>Transaction Name</li>
-          <li>Transaction Amount</li>
-          <li>Category</li>
-          <li>Account</li>
-        </ul>
+        <div className="headers">
+          <h4>Transaction Name</h4>
+          <h4>Transaction Amount</h4>
+          <h4>Category</h4>
+          <h4>Account</h4>
+        </div>
 
         {transaction.map((t, i) => {
           console.log(t.transaction_type);
           if (t.transaction_type === type) {
             return (
-              <ul key={i}>
-                <li>{t.transaction_name}</li>
-                <li>$ {t.transaction_amount}</li>
-                <li className={t.transaction_type}>{t.transaction_type}</li>
-                <li>{t.transaction_account}</li>
-              </ul>
+              <div key={i} className="results">
+                <h5>{t.transaction_name}</h5>
+                <h5>$ {t.transaction_amount}</h5>
+                <h5 className={t.transaction_type}>{t.transaction_type}</h5>
+                <h5>{t.transaction_account}</h5>
+              </div>
             );
           }
         })}
-        {/* </tbody>
-          <tfoot> */}
-        <ul>
-          <li>Total</li>
-          <li>
+
+        <div className="total">
+          <h5>Total</h5>
+          <h5>
             <span className={totalAmount > total ? "over" : ""}>
               $ {totalAmount}{" "}
             </span>
-            /
-            <br />$ {total}
-          </li>
-        </ul>
-        {/* </tfoot>
-        </table> */}
+            / $ {total}
+          </h5>
+        </div>
       </div>
     </div>
   );

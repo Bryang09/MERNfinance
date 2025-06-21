@@ -4,30 +4,43 @@ $accent: #35ffc6;
 .transactions-container {
   display: flex;
   align-items: center;
-  background: #191919;
+  // background: #191919;
+  background: #fff;
   min-height: 100vh;
   flex-wrap: wrap;
+  color: #333;
 }
 
 .form-container {
   //   border: 1px solid #ccc;
-  width: 50%;
+  // width: 50%;
   margin-left: 15px;
+  width: 100vw;
 
   .form {
     padding: 0 15px;
-    color: #fff;
+    color: #333;
 
     form {
       display: flex;
-      flex-direction: column;
-      width: 60%;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      span {
+        width: 18%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 1%;
+      }
 
       input {
         padding: 8px;
         border-radius: 8px;
         border: 1px solid #191919;
         margin: 10px 0;
+        background: #fff;
+        color: #333;
 
         &:focus-visible {
           outline: none;
@@ -38,6 +51,8 @@ $accent: #35ffc6;
         padding: 8px;
         border-radius: 8px;
         margin: 10px 0;
+        background: #fff;
+        color: #333;
 
         &:focus-visible {
           outline: none;
@@ -53,15 +68,15 @@ $accent: #35ffc6;
         border: 1px solid $accent;
         border-image: linear-gradient(to right, $accent 0%, #358bff 100%) 1;
         border-style: solid;
-        padding: 15px;
+        padding: 5px;
+        color: #358bff;
 
         &:hover {
           cursor: pointer;
-          //   background: darken($accent, 10%);
-          //   transition: 1s ease;
-          //   border: none;
           border-width: 0.5px;
-          border-image: linear-gradient(to right, #fc5d5d 0%, #ffad66 100%) 1;
+          background: #358bff;
+          color: #fff;
+          // border-image: linear-gradient(to right, #fc5d5d 0%, #ffad66 100%) 1;
         }
       }
     }
@@ -70,24 +85,45 @@ $accent: #35ffc6;
 .container {
   display: flex;
   flex-direction: column;
+  width: 90vw;
+  margin: 0 5vw;
 
   .show-transactions-container {
-    ul {
-      list-style: none;
-      display: flex;
-      padding: 0;
+    background: #1e1e1e;
+    margin: 2vh 0;
+    color: #fff;
+    text-transform: capitalize;
+  }
 
-      li {
-        margin: 0 10px;
-        padding: 0;
-        display: inline-block;
-        width: 20%;
-        box-sizing: border-box;
-      }
+  h3 {
+    margin-left: 1%;
+  }
+  .headers {
+    padding: 10px 0;
+    color: $accent;
+    display: flex;
+
+    h4 {
+      width: 23%;
+      margin: 0 1%;
     }
-    .headers {
-      padding: 10px;
-      color: $accent;
+  }
+
+  .results {
+    display: flex;
+    h5 {
+      width: 23%;
+      margin: 8px 1%;
+      color: #fff;
     }
+  }
+
+  .total {
+    display: flex;
+
+    span {
+      margin: 10px;
+    }
+    margin: 0 10px;
   }
 }

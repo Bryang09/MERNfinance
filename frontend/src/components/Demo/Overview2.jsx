@@ -95,7 +95,7 @@ function Overview2(data) {
             <h5>Balance</h5>
             <h5>% Change</h5>
             <h5>Weekly Investment</h5>
-            <h5>Investment Per Year</h5>
+            <h5>52 Weeks</h5>
           </div>
 
           {res.investments.length > 0 ? (

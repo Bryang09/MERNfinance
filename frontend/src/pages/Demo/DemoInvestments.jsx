@@ -2,7 +2,7 @@ import Nav from "../../components/Nav";
 
 // import "../../styles/demo/debts.scss";
 
-function DemoDebts() {
+function DemoInvestments() {
   return (
     <>
       <Nav />
@@ -41,4 +41,4 @@ function DemoDebts() {
   );
 }
 
-export default DemoDebts;
+export default DemoInvestments;

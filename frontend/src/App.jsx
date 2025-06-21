@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Demo from "./pages/Demo/DemoOverview";
 import DemoTransaction from "./pages/Demo/DemoTranactions";
-import DemoDebts from "./pages/Demo/DemoDebts";
+import DemoInvestments from "./pages/Demo/DemoInvestments";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/demo/transactions" element={<DemoTransaction />} />
-        <Route path="demo/debt" element={<DemoDebts />} />
+        <Route path="demo/investments" element={<DemoInvestments />} />
       </Routes>
     </>
   );
