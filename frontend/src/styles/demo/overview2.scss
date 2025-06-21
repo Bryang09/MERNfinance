@@ -1,14 +1,112 @@
 $accent: #35ffc6;
 
 .home-container {
-  position: relative;
-  left: 300px;
-  width: calc(100vw - 300px);
+  width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background: #fff;
+  color: #333;
+  padding-top: 5vh;
 
-  h1 span {
+  h1 {
+    margin: 0;
+  }
+  #name {
     color: $accent;
+  }
+}
+
+.overview-container {
+  width: 90vw;
+  margin: 0 5vw;
+
+  .allocations {
+    display: flex;
+    flex-wrap: wrap;
+
+    .allocation {
+      width: 240px;
+      border-radius: 10px;
+      margin: 5px;
+      text-align: center;
+      color: #fff;
+
+      span {
+        display: flex;
+        justify-content: space-around;
+      }
+    }
+
+    .wants {
+      background: linear-gradient(90deg, #439c4a, #6fffb2);
+    }
+    .needs {
+      background: linear-gradient(90deg, #0036c0, #5887ce);
+    }
+    .investments {
+      background: linear-gradient(90deg, #c00000, #ff6f6f);
+    }
+    .savings {
+      background: linear-gradient(90deg, #e313ff, #fb8dff);
+    }
+    .debt {
+      background: linear-gradient(90deg, #050505, #00979a);
+    }
+  }
+}
+
+.overview {
+  width: 90vw;
+  height: 100%;
+  padding-bottom: 5vh;
+}
+
+.overview-section {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 10px;
+  margin: 2vh 0;
+
+  .section {
+    display: flex;
+    flex-wrap: wrap;
+
+    .result-headers {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid #fff;
+      h5 {
+        width: 20%;
+        margin: 0;
+      }
+    }
+
+    .result {
+      width: 100%;
+      display: flex;
+      margin: 10px 0;
+      h5 {
+        width: 20%;
+        margin: 0;
+      }
+      h6 {
+        width: 20%;
+        margin: 0;
+      }
+
+      .positive {
+        color: $accent;
+      }
+      .neutral {
+        color: gainsboro;
+      }
+      .negative {
+        color: #c00000;
+      }
+    }
+
+    .result-active {
+      font-size: 1.2em;
+      color: #ffa82b;
+    }
   }
 }

@@ -13,10 +13,7 @@ function Overview(data) {
 
   price += res.snowball;
 
-  console.log(price);
-  console.log(debtsSort);
   debtsSort[0].weekly_payment = price;
-  console.log(debtsSort);
 
   const investments = data.data.investments;
   const investmentsSort = investments.sort(
