@@ -31,7 +31,7 @@ export const User = {
     {
       _id: 4,
       account_name: "Citi",
-      balance: 0,
+      balance: 150,
       interest: 32,
       amount_paid: 0,
       weekly_payment: 20,
