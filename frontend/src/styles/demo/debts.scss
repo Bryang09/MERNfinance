@@ -1,8 +1,103 @@
+.form-container {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0 10vw 3vh 10vw;
+  background: #1e1e1e;
+  color: #fff;
+
+  #add-debt {
+    margin-bottom: 5vh;
+    margin-top: 3vh;
+    color: #fff;
+  }
+}
 form {
   display: flex;
+  color: #fff;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90%;
+
   span {
     display: flex;
     flex-direction: column;
     margin: 0 1%;
+  }
+
+  input {
+    color: #333;
+    background: #fff;
+    outline: none;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 7px;
+
+    &:focus {
+      border: 1px solid #2fdcff;
+    }
+  }
+
+  select {
+    background: #fff;
+    color: #333;
+    border-radius: 5px;
+    padding: 7px;
+
+    &:focus-visible {
+      outline: none;
+      border: 1px solid #2fdcff;
+    }
+  }
+
+  button {
+    border: 1px solid #2fdcff;
+    background-color: transparent;
+    color: #fff;
+    padding: 0 2vw;
+    cursor: pointer;
+    transition: 0.4s ease;
+    border-radius: 10px;
+    margin-left: 3vw;
+
+    &:hover {
+      background: #2fdcff;
+      color: #fff;
+    }
+  }
+}
+
+.debts-container {
+  background-color: #fff;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.results-container {
+  width: 80vw;
+  margin: 0 10%;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  padding: 5vh 2vw;
+
+  .results-headers {
+    display: flex;
+
+    h4 {
+      width: 23%;
+      color: #35ffc6;
+    }
+  }
+  .results {
+    display: flex;
+    line-height: 2.5rem;
+    text-transform: capitalize;
+
+    h4 {
+      width: 23%;
+      color: #fff;
+    }
   }
 }
