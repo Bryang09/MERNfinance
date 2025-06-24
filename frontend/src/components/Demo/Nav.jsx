@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 // import "../styles/nav.scss";
-import "../styles/nav.scss";
+import "../../styles/nav.scss";
 
 function NavDemo() {
   return (
@@ -19,6 +19,9 @@ function NavDemo() {
           </NavLink>
           <NavLink to="/demo/investments">
             <li>Investments</li>
+          </NavLink>
+          <NavLink to="/demo/debts">
+            <li>Debts</li>
           </NavLink>
           <NavLink to="/demo/settings">
             <li>Settings</li>

@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Demo from "./pages/Demo/DemoOverview";
 import DemoTransaction from "./pages/Demo/DemoTranactions";
 import DemoInvestments from "./pages/Demo/DemoInvestments";
+import DemoDebts from "./pages/Demo/DemoDebts";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/demo" element={<Demo />} />
         <Route path="/demo/transactions" element={<DemoTransaction />} />
         <Route path="demo/investments" element={<DemoInvestments />} />
+        <Route path="demo/debts" element={<DemoDebts />} />
       </Routes>
     </>
   );

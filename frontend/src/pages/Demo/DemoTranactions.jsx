@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import NavDemo from "../../components/Nav";
+import NavDemo from "../../components/Demo/Nav";
 import "../../styles/demo/transactions.scss";
 import "../../styles/demo.scss";
 import DemoAddTransaction from "../../components/DemoAddTransaction";

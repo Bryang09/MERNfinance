@@ -4,6 +4,7 @@ $accent: #35ffc6;
   background: #fff;
   width: 100vw;
   min-height: 100vh;
+  padding-bottom: 5vh;
   color: #333;
 
   .investment-container {
@@ -95,6 +96,8 @@ $accent: #35ffc6;
   background: #333;
   color: #fff;
   padding-left: 15px;
+  margin-bottom: 5vh;
+  // height: 60vh;
 
   .headers {
     padding: 10px 0;
@@ -134,7 +137,6 @@ $accent: #35ffc6;
 }
 
 .expanded-results {
-  //   background-color: red;
   background-color: darken(#333, 4%);
   width: 70%;
   height: 80vh;

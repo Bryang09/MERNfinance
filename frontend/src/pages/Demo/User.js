@@ -1,6 +1,6 @@
 export const User = {
   name: "Bryan",
-  monthly_income: 4000,
+  monthly_income: 6500,
   goal: "Debt",
   snowball: 40,
   debts: [
@@ -74,6 +74,8 @@ export const User = {
       account_name: "American Express HYSA",
       initial_balance: 2000,
       current_balance: 2000,
+      weekly_investment: 20,
+      apy: 3.5,
     },
   ],
   transactions: [

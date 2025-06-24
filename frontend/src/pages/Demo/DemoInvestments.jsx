@@ -1,8 +1,6 @@
 import { useState } from "react";
-import Nav from "../../components/Nav";
-import { LineChart } from "@mui/x-charts";
+import Nav from "../../components/Demo/Nav";
 
-// import "../../styles/demo/debts.scss";
 import "../../styles/demo/investments.scss";
 import { User } from "./User";
 import DemoInvestmentResults from "../../components/Demo/DemoInvestmentResults";
@@ -22,6 +20,8 @@ function DemoInvestments() {
     e.preventDefault();
     console.log(type);
     const acc = type == "other" ? newAccount : name;
+    e.target.reset();
+    setType("");
 
     const newCurrentBalance = investments.map((investment) => {
       if (investment.account_name === type) {
@@ -66,10 +66,6 @@ function DemoInvestments() {
       };
       newInvestment(invest);
     }
-
-    // if (type === "401k" || type === "Roth IRA" || type="") {
-    //   setInvestments(newCurrentBalance);
-    // }
   }
 
   function newInvestment(investment) {
@@ -82,8 +78,6 @@ function DemoInvestments() {
     setSavings([...savings, saving]);
   }
 
-  // const []
-  console.log(investments);
   return (
     <>
       <Nav />
@@ -118,7 +112,7 @@ function DemoInvestments() {
                     name="new-account"
                     id="new-account"
                     onChange={(e) => setNewAccount(e.target.value)}
-                    value={() => e.target.value}
+                    // value={() => e.target.value}
                   />
                 </div>
               ) : null}
@@ -149,6 +143,7 @@ function DemoInvestments() {
               type="Investments"
               investments={investments}
             />
+            {/* <DemoInvestmentResults type="Savings" investments={savings} /> */}
           </div>
         </div>
       </div>

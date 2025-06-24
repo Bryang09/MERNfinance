@@ -1,44 +1,8 @@
-$bg: #071424;
-
-.debt-page-container {
-  width: 100vw;
-  background-color: $bg;
-  min-height: 100vh;
+form {
   display: flex;
-  //   justify-content: center;
-
-  .debt-container {
-    display: flex;
-    justify-self: flex-start;
-    padding-left: 5vw;
-    color: #333;
-    flex-direction: column;
-    width: 90vw;
-  }
-
-  .debt-section {
-    width: 100%;
-    background: #fff;
-  }
-
-  .input-container {
+  span {
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
-  }
-
-  .form-container {
-    width: 100%;
-    background: #fff;
-    form {
-      display: flex;
-      padding: 20px 10px;
-
-      button {
-        background: red;
-        outline: none;
-        border: none;
-      }
-    }
+    margin: 0 1%;
   }
 }
