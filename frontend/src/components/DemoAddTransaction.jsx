@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function DemoAddTransaction(user) {
   console.log(user);
@@ -31,7 +32,7 @@ function DemoAddTransaction(user) {
     e.target.reset();
     setAccount("");
     setCategory("");
-    alert("Transaction Added Successfully");
+    toast.success("Transaction Added Successfully");
   };
   return (
     <div className="form-container">
@@ -112,6 +113,7 @@ function DemoAddTransaction(user) {
             </>
           )}
           <button>Add Transaction</button>
+          <ToastContainer autoClose={1300} />
         </form>
       </div>
     </div>
