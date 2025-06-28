@@ -62,11 +62,41 @@ const addInvestment = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json(investment);
+    const sort = investment.investments.sort(
+      (a, b) => b.amount_invested - a.amount_invested
+    );
+
+    res.status(200).json(sort);
   } catch (err) {
     res.status(400).json({
       error: err.message,
     });
+  }
+};
+
+// update investment
+const updateInvestment = async (req, res) => {
+  const { id, investmentId } = req.params;
+  const { new_amount_invested } = req.body;
+  console.log(id, investmentId);
+
+  try {
+    const investment = await User.findByIdAndUpdate(
+      {
+        _id: id,
+        "investments._id": investmentId,
+      },
+      {
+        $inc: {
+          "investments.$[].amount_invested": new_amount_invested,
+        },
+      }
+      //   { new: true }
+    );
+
+    res.status(200).json(investment);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
   }
 };
 
@@ -98,7 +128,7 @@ const addDebts = async (req, res) => {
     );
     const sort = debt.debts.sort((a, b) => a.balance - b.balance);
     console.log(sort);
-    res.status(200).json(debt);
+    res.status(200).json(sort);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -130,4 +160,5 @@ module.exports = {
   addInvestment,
   addDebts,
   getDebts,
+  updateInvestment,
 };

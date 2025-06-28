@@ -8,6 +8,7 @@ const {
   addInvestment,
   addDebts,
   getDebts,
+  updateInvestment,
 } = require("../controllers/userController");
 // GET all user
 router.get("/users", getAllUsers);
@@ -17,6 +18,8 @@ router.post("/user", createUser);
 router.get("/user/:id", getUser);
 // Add Investment
 router.put("/user/:id/investments", addInvestment);
+// Update Investment
+router.put("/user/:id/investments/:investmentId", updateInvestment);
 // Add Debts
 router.put("/user/:id/debts", addDebts);
 router.get("/user/:id/debts", getDebts);
