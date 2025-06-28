@@ -1,8 +1,6 @@
 function DemoTransactionResults(tr) {
   const transaction = tr.transaction;
   const { totalAmount, total, type } = tr;
-  console.log(type);
-  console.log(tr);
   return (
     <div className="show-transactions-container">
       <h3>{type}</h3>

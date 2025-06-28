@@ -32,10 +32,10 @@ function DemoDebts() {
       const weekly = recurring ? parseInt(weeklyPayment) : 0;
       if (debt.account_name == account) {
         if (amount > 0) toast.success(`${account} Balance Updated`);
-        if (amount < 0)
-          toast.success(`${account} Debt Payment Succesfully Recorded`);
-        if (debt.balance - amount < 0)
+        if (debt.balance - amount <= 0) {
           setSnowball(snowball + debt.weekly_payment);
+          console.log("success");
+        }
 
         transactionType === "payment"
           ? setAmount(parseInt(-amount))

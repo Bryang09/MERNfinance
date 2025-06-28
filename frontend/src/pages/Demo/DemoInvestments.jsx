@@ -66,73 +66,72 @@ function DemoInvestments() {
   return (
     <>
       <Nav />
-      <div className="investment-page-container">
-        <div className="investment-container">
-          <div className="form-container">
-            <div className="form">
-              <h3>Add Investment</h3>
-              <form onSubmit={handleSubmit}>
-                <div className="input-container">
-                  <label htmlFor="type">Type</label>
-                  <select
-                    name="type"
-                    id="type"
-                    onChange={(e) => setType(e.target.value)}
-                    value={type}
-                  >
-                    <option disabled></option>
-                    {investments.map((t) => {
-                      return (
-                        <option value={t.account_name} key={t._id}>
-                          {t.account_name}
-                        </option>
-                      );
-                    })}
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                {type === "other" ? (
-                  <div className="input-container">
-                    <label htmlFor="new-account">New Account</label>
-                    <input
-                      type="text"
-                      name="new-account"
-                      id="new-account"
-                      onChange={(e) => setNewAccount(e.target.value)}
-                      // value={() => e.target.value}
-                    />
-                  </div>
-                ) : null}
-                <div className="input-container">
-                  <label htmlFor="debtAmount"> Amount</label>
+      <div className="debts-container">
+        <div className="form-container">
+          <div className="form">
+            <h3>Add Investment</h3>
+            <form onSubmit={handleSubmit}>
+              <span className="input-container">
+                <label htmlFor="type">Type</label>
+                <select
+                  name="type"
+                  id="type"
+                  onChange={(e) => setType(e.target.value)}
+                  value={type}
+                  required={true}
+                >
+                  <option disabled></option>
+                  {investments.map((t) => {
+                    return (
+                      <option value={t.account_name} key={t._id}>
+                        {t.account_name}
+                      </option>
+                    );
+                  })}
+                  <option value="other">Other</option>
+                </select>
+              </span>
+              {type === "other" ? (
+                <span className="input-container">
+                  <label htmlFor="new-account">New Account</label>
                   <input
-                    type="number"
-                    name="debtAmount"
-                    id="debtAmount"
-                    onChange={(e) => setAmount(e.target.value)}
+                    type="text"
+                    name="new-account"
+                    id="new-account"
+                    onChange={(e) => setNewAccount(e.target.value)}
+                    // value={() => e.target.value}
+                    required={true}
                   />
-                </div>
-                <div className="input-container checkbox">
-                  <label htmlFor="recurring">Recurring Contribution?</label>
-                  <input
-                    type="checkbox"
-                    name="recurring"
-                    id="recurring"
-                    checked={check}
-                    onChange={(e) => isChecked(e.target.checked)}
-                  />
-                </div>
-                <button>Submit</button>
-                <ToastContainer autoClose={1700} />
-              </form>
-            </div>
+                </span>
+              ) : null}
+              <span className="input-container">
+                <label htmlFor="debtAmount"> Amount</label>
+                <input
+                  type="number"
+                  name="debtAmount"
+                  id="debtAmount"
+                  onChange={(e) => setAmount(e.target.value)}
+                  required={true}
+                />
+              </span>
+              <span className="input-container checkbox">
+                <label htmlFor="recurring">Recurring Contribution?</label>
+                <input
+                  type="checkbox"
+                  name="recurring"
+                  id="recurring"
+                  checked={check}
+                  onChange={(e) => isChecked(e.target.checked)}
+                  required={true}
+                />
+              </span>
+              <button>Submit</button>
+              <ToastContainer autoClose={1700} />
+            </form>
           </div>
-          <div className="investment-section">
-            <DemoInvestmentResults
-              type="Investments"
-              investments={investments}
-            />
-          </div>
+        </div>
+        <div className="results-container">
+          <DemoInvestmentResults type="Investments" investments={investments} />
         </div>
       </div>
     </>

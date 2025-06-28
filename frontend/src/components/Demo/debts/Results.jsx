@@ -4,6 +4,7 @@ function Results(props) {
     style: "currency",
     currency: "USD",
   });
+
   return (
     <div className="results-container">
       <div className="results-headers">
@@ -58,7 +59,7 @@ function Results(props) {
         );
       })}{" "}
       {activeDebt !== null && (
-        <div className="expanded-results">
+        <div className="expanded-results debts-expanded-results">
           <span className="title">
             <h4>{activeDebt.account_name}</h4>
           </span>
@@ -120,6 +121,11 @@ function Results(props) {
 
                       let total = debt.weekly_payment + snowball;
                       let division = activeDebt.balance / total;
+                      const original =
+                        activeDebt.balance / activeDebt.weekly_payment;
+                      const percentageDifference =
+                        ((division - original) / original) * 100;
+
                       return (
                         <>
                           <h4 key={debt._id}>
@@ -131,6 +137,23 @@ function Results(props) {
                               ? `${division.toFixed(2)} Weeks`
                               : `${division.toFixed(2) / 4} Months`}
                           </h4>
+                          {percentageDifference < 0 ? (
+                            <h4 className={"positive"}>
+                              {`${Math.abs(percentageDifference).toFixed(
+                                2
+                              )}% faster`}
+                            </h4>
+                          ) : (
+                            <h4
+                              className={
+                                percentageDifference < 0
+                                  ? "positive"
+                                  : "negative"
+                              }
+                            >
+                              {Math.abs(percentageDifference).toFixed(2)}
+                            </h4>
+                          )}
                         </>
                       );
                     }

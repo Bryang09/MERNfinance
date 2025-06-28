@@ -50,7 +50,7 @@ function Demo() {
                 <h6>{wantPercent * 100}%</h6>
               </span>
               <h6>
-                {wants}/{income}
+                <span>{wants}</span>/{income}
               </h6>
             </div>
             <div className="allocation needs">
@@ -59,7 +59,7 @@ function Demo() {
                 <h6>{needPercent * 100}%</h6>
               </span>
               <h6>
-                {needs}/{income}
+                <span>{needs}</span> /{income}
               </h6>
             </div>
             <div className="allocation investments">
@@ -68,7 +68,7 @@ function Demo() {
                 <h6>{investmentPercent * 100}%</h6>
               </span>
               <h6>
-                {investments}/{income}
+                <span>{investments}</span> /{income}
               </h6>
             </div>
             <div className="allocation savings">
@@ -77,7 +77,7 @@ function Demo() {
                 <h6>{savingsPercent * 100}%</h6>
               </span>
               <h6>
-                {savings}/{income}
+                <span>{savings}</span> /{income}
               </h6>
             </div>
             <div className="allocation debt">
@@ -86,7 +86,7 @@ function Demo() {
                 <h6>{debtPercent * 100}%</h6>
               </span>
               <h6>
-                {debt}/{income}
+                <span>{debt}</span>/{income}
               </h6>
             </div>
           </div>

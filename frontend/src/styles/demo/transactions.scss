@@ -126,3 +126,41 @@ $accent: #35ffc6;
     margin: 0 10px;
   }
 }
+
+@media screen and (max-width: 935px) {
+  .form-container {
+    h3 {
+      text-align: center;
+    }
+    .form {
+      form {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          width: 60%;
+        }
+        label {
+          font-size: 12px;
+        }
+
+        #recurring {
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+
+  .container {
+    .headers {
+      padding: 10px 4px;
+      h4 {
+        font-size: 12px;
+      }
+    }
+    .results {
+      padding: 0 4px;
+    }
+  }
+}

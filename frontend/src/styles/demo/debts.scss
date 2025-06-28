@@ -93,6 +93,11 @@ form {
     line-height: 2.5rem;
     text-transform: capitalize;
 
+    &:hover {
+      background: #1a1a1a;
+      cursor: pointer;
+    }
+
     h4 {
       width: 23%;
       color: #fff;
@@ -101,5 +106,11 @@ form {
     span {
       color: #2fdcff;
     }
+  }
+}
+
+.debts-expanded-results {
+  h4 {
+    width: 30% !important;
   }
 }

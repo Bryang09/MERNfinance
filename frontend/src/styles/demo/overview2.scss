@@ -34,6 +34,10 @@ $accent: #35ffc6;
         display: flex;
         justify-content: space-around;
       }
+
+      span {
+        font-size: 1.1rem;
+      }
     }
 
     .wants {
@@ -107,6 +111,31 @@ $accent: #35ffc6;
     .result-active {
       font-size: 1.2em;
       color: #ffa82b;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .overview-container {
+    .allocations {
+      .allocation {
+        width: 45%;
+        // margin: 1vh 5%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 678px) {
+  .overview-section .section {
+    .result-headers h5 {
+      font-size: 0.6rem;
+    }
+
+    .result {
+      h5 {
+        font-size: 0.7rem;
+      }
     }
   }
 }

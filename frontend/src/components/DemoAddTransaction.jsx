@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
 function DemoAddTransaction(user) {
-  console.log(user);
   const transactions = user.transaction;
   var result = transactions.reduce((unique, o) => {
     if (
@@ -98,7 +97,6 @@ function DemoAddTransaction(user) {
               <option value="Other">Other</option>
             </select>
           </span>
-
           {account === "Other" && (
             <>
               <span>

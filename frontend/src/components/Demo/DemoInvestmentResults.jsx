@@ -100,10 +100,10 @@ function DemoInvestmentResults(res) {
   ).toFixed(2);
 
   return (
-    <div className="show-investment-container">
+    <>
       <h3>{type}</h3>
       <div className="show-investment">
-        <div className="headers">
+        <div className="results-headers">
           <h4>Account Type</h4>
           <h4>Account Balance</h4>
           <h4>Weekly Contribution</h4>
@@ -119,10 +119,10 @@ function DemoInvestmentResults(res) {
           return (
             <>
               <div className="results" onClick={() => handleClick(investment)}>
-                <h5>{investment.account_name}</h5>
-                <h5>{formatter.format(investment.current_balance)}</h5>
-                <h5>{formatter.format(investment.weekly_investment)}</h5>
-                <h5
+                <h4>{investment.account_name}</h4>
+                <h4>{formatter.format(investment.current_balance)}</h4>
+                <h4>{formatter.format(investment.weekly_investment)}</h4>
+                <h4
                   className={
                     percent > 0
                       ? "positive"
@@ -130,14 +130,14 @@ function DemoInvestmentResults(res) {
                       ? "negative"
                       : "neutral"
                   }
-                >{`${percent.toFixed(2)}%`}</h5>
+                >{`${percent.toFixed(2)}%`}</h4>
               </div>
             </>
           );
         })}
 
         {expanded && (
-          <div className={expanded ? "results expanded-results" : "hidden"}>
+          <div className={expanded ? " expanded-results" : "hidden"}>
             <span className="title">
               <h4>{account_name}</h4>
               <span>
@@ -210,30 +210,27 @@ function DemoInvestmentResults(res) {
                 <br /> Gains
               </h4>
             </div>
-            <div className="data">
-              <h4>{investedTenYears}</h4>
-              <h4>{tenYearFormat}</h4>
-              <h4
-                className={
-                  diffYear > 0
-                    ? "positive"
-                    : diffYear < 0
-                    ? "negative"
-                    : "neutral"
-                }
-              >
-                {diffTenYear}%
-              </h4>
+            <div className="results">
+              <div className="data">
+                <h4>{investedTenYears}</h4>
+                <h4>{tenYearFormat}</h4>
+                <h4
+                  className={
+                    diffYear > 0
+                      ? "positive"
+                      : diffYear < 0
+                      ? "negative"
+                      : "neutral"
+                  }
+                >
+                  {diffTenYear}%
+                </h4>
+              </div>
             </div>
           </div>
         )}
-
-        <div className="total">
-          <h5>Total</h5>
-          <h5></h5>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
 export default DemoInvestmentResults;

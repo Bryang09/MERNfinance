@@ -7,7 +7,6 @@ import { User } from "./User";
 import DemoTransactionResults from "../../components/DemoTransactionResults";
 
 function DemoTransaction() {
-  console.log(User);
   //   Add all the debts
   const debts = User.debts.reduce((a, v) => (a += v.weekly_payment), 0);
 
@@ -56,13 +55,10 @@ function DemoTransaction() {
       .filter((d) => d.transaction_type === "Debt")
       .reduce((a, v) => (a += v.transaction_amount), 0);
     setTotalDebt(totDebt);
-    console.log(totalWant);
   }, [transaction]);
 
   function newTransactions(ar) {
-    console.log(ar);
     setTransaction([...transaction, ar]);
-    console.log(transaction);
   }
 
   return (
