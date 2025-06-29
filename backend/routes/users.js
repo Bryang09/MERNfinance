@@ -9,7 +9,9 @@ const {
   addDebts,
   getDebts,
   updateInvestment,
+  updateDebt,
 } = require("../controllers/userController");
+
 // GET all user
 router.get("/users", getAllUsers);
 // Create User
@@ -22,6 +24,9 @@ router.put("/user/:id/investments", addInvestment);
 router.put("/user/:id/investments/:investmentId", updateInvestment);
 // Add Debts
 router.put("/user/:id/debts", addDebts);
+// Update Debt
+router.put("/user/:id/debts/:debtId", updateDebt);
+// GET Debts
 router.get("/user/:id/debts", getDebts);
 
 module.exports = router;
