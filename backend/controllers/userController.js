@@ -91,12 +91,20 @@ const updateInvestment = async (req, res) => {
 
   try {
     console.log(typeof investmentId);
-    const updateFields = `investments.${investmentId}.amount_invested`;
-    const investment = await User.findByIdAndUpdate(
-      { id, "investments._id": investmentId },
+    if (
+      await User.findOne({
+        _id: id,
+        "investments._id": investmentId,
+      })
+    ) {
+      console.log(investmentId);
+      console.log("true");
+    }
+    const investment = await User.findOneAndUpdate(
+      { _id: id, "investments._id": investmentId },
       {
         $inc: {
-          "investments.$.account_balance": new_amount_invested,
+          "investments.$.amount_invested": new_amount_invested,
         },
       },
       { new: true }
@@ -106,7 +114,7 @@ const updateInvestment = async (req, res) => {
       (a, b) => b.amount_invested - a.amount_invested
     );
 
-    res.status(200).json(investment);
+    res.status(200).json(sort);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -147,13 +155,11 @@ const addDebts = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
+// Edit Debt
 const updateDebt = async (req, res) => {
   const { id, debtId } = req.params;
   const { amount_paid } = req.body;
 
-  const r = `debts.${debtId}.amount_paid`;
-  console.log(typeof amount_paid);
   try {
     const debt = await User.findOneAndUpdate(
       {
