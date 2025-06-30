@@ -11,7 +11,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       // required: true,
-      // unique: true,
+      //
     },
     password: {
       type: String,
@@ -33,15 +33,12 @@ const userSchema = new Schema(
       {
         account_name: {
           type: String,
-          // required: true,
         },
         balance: {
           type: Number,
-          // required: true,
         },
         interest_rate: {
           type: Number,
-          // required: true,
         },
         amount_paid: {
           type: Number,
@@ -49,20 +46,17 @@ const userSchema = new Schema(
         },
         monthly_payment: {
           type: Number,
-          // required: true,
         },
       },
+      { timestamps: true },
     ],
     investments: [
       {
         account_name: {
           type: String,
-          unique: true,
-          // required: true,
         },
         initial_amount: {
           type: Number,
-          // required: true,
         },
         amount_invested: {
           type: Number,
@@ -72,36 +66,32 @@ const userSchema = new Schema(
         },
         monthly_investment: {
           type: Number,
-          // required: true,
         },
       },
+      { timestamps: true },
     ],
     savings: [
       {
         account_name: {
           type: String,
-          // required: true,
         },
         initial_balance: {
           type: Number,
-          // required: true,
         },
         current_balance: {
           type: Number,
-          default: 0,
         },
         monthly_saving: {
           type: Number,
-          // required: true,
         },
         account_nickname: {
           type: String,
         },
         interest: {
           type: Number,
-          // required: true,
         },
       },
+      { timestamps: true },
     ],
   },
   { timestamps: true }

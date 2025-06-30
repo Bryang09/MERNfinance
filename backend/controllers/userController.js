@@ -38,6 +38,8 @@ const createUser = async (req, res) => {
   }
 };
 
+// INVESTMENTS
+
 // Add Investment
 const addInvestment = async (req, res) => {
   const { account_name, initial_amount, amount_invested, monthly_investment } =
@@ -80,15 +82,21 @@ const updateInvestment = async (req, res) => {
   const { new_amount_invested } = req.body;
   console.log(id, investmentId);
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Invalid User Id" });
+  }
+  if (!mongoose.Types.ObjectId.isValid(investmentId)) {
+    return res.status(400).json({ error: "Invalid Investment Id" });
+  }
+
   try {
+    console.log(typeof investmentId);
+    const updateFields = `investments.${investmentId}.amount_invested`;
     const investment = await User.findByIdAndUpdate(
-      {
-        _id: id,
-        "investments._id": investmentId,
-      },
+      { id, "investments._id": investmentId },
       {
         $inc: {
-          "investments.$[].amount_invested": new_amount_invested,
+          "investments.$.account_balance": new_amount_invested,
         },
       },
       { new: true }
@@ -98,11 +106,13 @@ const updateInvestment = async (req, res) => {
       (a, b) => b.amount_invested - a.amount_invested
     );
 
-    res.status(200).json(sort);
+    res.status(200).json(investment);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 };
+
+//  DEBTS
 
 // Add Debts
 const addDebts = async (req, res) => {
@@ -140,16 +150,19 @@ const addDebts = async (req, res) => {
 
 const updateDebt = async (req, res) => {
   const { id, debtId } = req.params;
-  const { debt_amount } = req.body;
+  const { amount_paid } = req.body;
+
+  const r = `debts.${debtId}.amount_paid`;
+  console.log(typeof amount_paid);
   try {
-    const debt = await User.findByIdAndUpdate(
+    const debt = await User.findOneAndUpdate(
       {
         _id: id,
         "debts._id": debtId,
       },
       {
         $inc: {
-          "debts.$[].balance": debt_amount,
+          "debts.$.amount_paid": amount_paid,
         },
       },
       { new: true }
@@ -179,6 +192,35 @@ const getDebts = async (req, res) => {
   }
 };
 
+// SAVINGS
+
+// Add Savings
+const addSavings = async (req, res) => {
+  const { id } = req.params;
+  const { account_name, initial_balance, monthly_saving, interest } = req.body;
+
+  try {
+    const savings = await User.findByIdAndUpdate(
+      id,
+      {
+        $push: {
+          savings: {
+            account_name,
+            initial_balance,
+            monthly_saving,
+            interest,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    res.status(200).json(savings);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
@@ -188,4 +230,5 @@ module.exports = {
   getDebts,
   updateInvestment,
   updateDebt,
+  addSavings,
 };

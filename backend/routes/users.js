@@ -10,6 +10,7 @@ const {
   getDebts,
   updateInvestment,
   updateDebt,
+  addSavings,
 } = require("../controllers/userController");
 
 // GET all user
@@ -18,15 +19,22 @@ router.get("/users", getAllUsers);
 router.post("/user", createUser);
 // GET user by id
 router.get("/user/:id", getUser);
+
+// INVESTMENTS
 // Add Investment
-router.put("/user/:id/investments", addInvestment);
+router.put("/user/investments/:id", addInvestment);
 // Update Investment
 router.put("/user/:id/investments/:investmentId", updateInvestment);
+
+// DEBTS
 // Add Debts
 router.put("/user/:id/debts", addDebts);
 // Update Debt
 router.put("/user/:id/debts/:debtId", updateDebt);
 // GET Debts
 router.get("/user/:id/debts", getDebts);
+
+// SAVINGS
+router.post("/user/:id/savings", addSavings);
 
 module.exports = router;
