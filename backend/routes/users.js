@@ -11,6 +11,9 @@ const {
   updateInvestment,
   updateDebt,
   addSavings,
+  getSavings,
+  setTransaction,
+  editTransactionAmount,
 } = require("../controllers/userController");
 
 // GET all user
@@ -36,5 +39,10 @@ router.get("/user/:id/debts", getDebts);
 
 // SAVINGS
 router.post("/user/:id/savings", addSavings);
+router.get("/user/:id/savings", getSavings);
+
+// Transactions
+router.post("/user/:id/transactions", setTransaction);
+router.put("/user/:id/transactions/:transactionId", editTransactionAmount);
 
 module.exports = router;

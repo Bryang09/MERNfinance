@@ -47,6 +47,10 @@ const userSchema = new Schema(
         monthly_payment: {
           type: Number,
         },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
       },
       { timestamps: true },
     ],
@@ -66,6 +70,10 @@ const userSchema = new Schema(
         },
         monthly_investment: {
           type: Number,
+        },
+        date: {
+          type: Date,
+          default: Date.now,
         },
       },
       { timestamps: true },
@@ -90,8 +98,32 @@ const userSchema = new Schema(
         interest: {
           type: Number,
         },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
       },
       { timestamps: true },
+    ],
+    transactions: [
+      {
+        name: {
+          type: String,
+        },
+        amount: {
+          type: Number,
+        },
+        category: {
+          type: String,
+        },
+        account: {
+          type: String,
+        },
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+      },
     ],
   },
   { timestamps: true }

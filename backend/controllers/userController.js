@@ -173,6 +173,7 @@ const updateDebt = async (req, res) => {
       },
       { new: true }
     );
+
     res.status(200).json(debt);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -227,6 +228,76 @@ const addSavings = async (req, res) => {
   }
 };
 
+const getSavings = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const savings = await User.findOne({ _id: id }).select("savings");
+    const sort = savings.savings.sort((a, b) => a.balance - b.balance);
+
+    res.status(200).json(sort);
+  } catch (err) {
+    res.status(400).json({
+      error: err.message,
+    });
+  }
+};
+
+// Transactions
+
+// Add Transaction
+const setTransaction = async (req, res) => {
+  const { id } = req.params;
+  const { name, amount, category, account } = req.body;
+
+  try {
+    const transaction = await User.findByIdAndUpdate(
+      id,
+      {
+        $push: {
+          transactions: {
+            name,
+            amount,
+            category,
+            account,
+          },
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(transaction);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Edit Transaction
+
+const editTransactionAmount = async (req, res) => {
+  const { id, transactionId } = req.params;
+  const { amount } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Invalid User Id" });
+  }
+  if (!mongoose.Types.ObjectId.isValid(transactionId)) {
+    return res.status(400).json({ error: "Invalid Transaction Id" });
+  }
+  try {
+    const transaction = await User.findOneAndUpdate(
+      { _id: id, "transactions._id": transactionId },
+      {
+        $set: {
+          "transactions.$.amount": amount,
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(transaction);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
@@ -237,4 +308,7 @@ module.exports = {
   updateInvestment,
   updateDebt,
   addSavings,
+  getSavings,
+  setTransaction,
+  editTransactionAmount,
 };
