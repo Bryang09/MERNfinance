@@ -85,8 +85,29 @@ const updateSaving = async (req, res) => {
   }
 };
 
+// Delete Saving
+const deleteSaving = async (req, res) => {
+  const { id, savingId } = req.params;
+
+  try {
+    const savings = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        $pull: {
+          savings: { _id: savingId },
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(savings);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   addSavings,
   getSavings,
   updateSaving,
+  deleteSaving,
 };

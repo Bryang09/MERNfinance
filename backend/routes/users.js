@@ -12,6 +12,7 @@ const {
   addInvestment,
   updateInvestment,
   getInvestments,
+  deleteInvestment,
 } = require("../controllers/investmentsController");
 
 const {
@@ -24,6 +25,7 @@ const {
   addSavings,
   getSavings,
   updateSaving,
+  deleteSaving,
 } = require("../controllers/savingsController");
 
 const {
@@ -39,6 +41,7 @@ router.post("/user", createUser);
 // GET user by id
 router.get("/user/:id", getUser);
 //  Delete User
+router.delete("/user/:id", deleteUser);
 
 // INVESTMENTS
 // Add Investment
@@ -48,19 +51,19 @@ router.put("/user/:id/investments/:investmentId", updateInvestment);
 // Get Investments
 router.get("/user/:id/investments", getInvestments);
 // Delete Investment
-router.delete("/user/:id", deleteUser);
+router.delete("/user/:id/investments/:investmentId", deleteInvestment);
 
 // DEBTS
 // Add Debts
 router.put("/user/:id/debts", addDebts);
 router.put("/user/:id/debts/:debtId", updateDebt);
 router.get("/user/:id/debts", getDebts);
-// Delete Debt
 
 // SAVINGS
 router.post("/user/:id/savings", addSavings);
 router.get("/user/:id/savings", getSavings);
 router.put("/user/:id/savings/:savingId", updateSaving);
+router.delete("/user/:id/savings/:savingId", deleteSaving);
 
 // Transactions
 router.post("/user/:id/transactions", setTransaction);

@@ -95,8 +95,32 @@ const updateInvestment = async (req, res) => {
   }
 };
 
+// delete investement
+
+const deleteInvestment = async (req, res) => {
+  const { id, investmentId } = req.params;
+
+  try {
+    const investment = await User.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $pull: {
+          investments: { _id: investmentId },
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(investment);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   addInvestment,
   getInvestments,
   updateInvestment,
+  deleteInvestment,
 };
