@@ -74,8 +74,30 @@ const editTransaction = async (req, res) => {
   }
 };
 
+// delete transaction
+const deleteTransaction = async (req, res) => {
+  const { id, transactionId } = req.params;
+
+  try {
+    const transactions = await User.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $pull: {
+          transactions: { _id: transactionId },
+        },
+      },
+      { new: true }
+    );
+    res.status(200).json(transactions);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 module.exports = {
   getTransactions,
   setTransaction,
   editTransaction,
+  deleteTransaction,
 };

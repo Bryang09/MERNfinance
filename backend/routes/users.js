@@ -6,6 +6,8 @@ const {
   getAllUsers,
   getUser,
   deleteUser,
+  signupUser,
+  loginUser,
 } = require("../controllers/userController");
 
 const {
@@ -32,8 +34,13 @@ const {
   setTransaction,
   getTransactions,
   editTransaction,
+  deleteTransaction,
 } = require("../controllers/transactionsController");
 
+// signup user
+router.post("/signup", signupUser);
+// login user
+router.post("/login", loginUser);
 // GET all user
 router.get("/users", getAllUsers);
 // Create User
@@ -54,7 +61,6 @@ router.get("/user/:id/investments", getInvestments);
 router.delete("/user/:id/investments/:investmentId", deleteInvestment);
 
 // DEBTS
-// Add Debts
 router.put("/user/:id/debts", addDebts);
 router.put("/user/:id/debts/:debtId", updateDebt);
 router.get("/user/:id/debts", getDebts);
@@ -69,5 +75,6 @@ router.delete("/user/:id/savings/:savingId", deleteSaving);
 router.post("/user/:id/transactions", setTransaction);
 router.put("/user/:id/transactions/:transactionId", editTransaction);
 router.get("/user/:id/transactions", getTransactions);
+router.delete("/user/:id/transactions/:transactionId", deleteTransaction);
 
 module.exports = router;
