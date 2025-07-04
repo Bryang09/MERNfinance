@@ -1,4 +1,4 @@
-import "../styles/home.scss";
+import "../styles/demo/home.scss";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
         <h1>Finance Tracker</h1>
         <h3>Track Expenses & Plan For Your Future</h3>
         <div className="links">
-          <Link to="/">
+          <Link to="/signup">
             <h5 id="create-account">Create Account</h5>
           </Link>
           <Link to="/demo">

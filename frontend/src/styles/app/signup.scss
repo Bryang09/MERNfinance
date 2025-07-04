@@ -1,0 +1,79 @@
+.signup-page {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #fff;
+    padding: 10vh 10vw;
+    width: 40vw;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .form-section {
+        margin: 10px 0;
+
+        label {
+          margin-bottom: 5px;
+        }
+        .goal span {
+          display: flex;
+          flex-direction: row;
+
+          h5 {
+            margin: 5px 10px;
+            border: 1px solid #fff;
+            padding: 10px 10px;
+            cursor: pointer;
+            width: 40%;
+            text-align: center;
+            transition: 0.4s ease;
+          }
+          #debt {
+            margin-left: 0;
+            border: 1px solid #35ffc6;
+
+            &:hover {
+              background-color: #35ffc6;
+            }
+          }
+          #debt_active {
+            margin-left: 0;
+            background-color: #35ffc6;
+            border: 1px solid #35ffc6;
+          }
+          #investment {
+            border: 1px solid #a96bff;
+
+            &:hover {
+              background-color: #a96bff;
+            }
+          }
+          #investment_active {
+            background-color: #a96bff;
+            border: 1px solid #a96bff;
+          }
+        }
+      }
+      button {
+        padding: 10px;
+        margin: 10px;
+      }
+      #disabled_button {
+        border: 1px solid gray;
+        cursor: not-allowed;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,10 @@
-import { NavLink } from "react-router-dom";
-
-// import "../styles/nav.scss";
-import "../../styles/demo/nav.scss";
-
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
 
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-function NavDemo() {
-  const [open, isOpen] = useState(false);
-  console.log(open);
+function Nav() {
   return (
     <>
       <span className="mobile">
@@ -41,10 +35,14 @@ function NavDemo() {
             <NavLink to="/demo/debts">
               <li>Debts</li>
             </NavLink>
+            <NavLink>
+              <li>Settings</li>
+            </NavLink>
           </ul>
         </nav>
       </header>
     </>
   );
 }
-export default NavDemo;
+
+export default Nav;

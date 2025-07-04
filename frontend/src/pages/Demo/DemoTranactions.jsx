@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import NavDemo from "../../components/Demo/Nav";
 import "../../styles/demo/transactions.scss";
-import "../../styles/demo.scss";
-import DemoAddTransaction from "../../components/DemoAddTransaction";
+import "../../styles/demo/demo.scss";
+import DemoAddTransaction from "../../components/Demo/DemoAddTransaction";
 import { User } from "./User";
-import DemoTransactionResults from "../../components/DemoTransactionResults";
+import DemoTransactionResults from "../../components/Demo/DemoTransactionResults";
 
 function DemoTransaction() {
   //   Add all the debts

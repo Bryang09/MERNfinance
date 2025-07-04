@@ -12,6 +12,7 @@ $accent: #35ffc6;
   }
   #name {
     color: $accent;
+    text-transform: capitalize;
   }
 }
 
