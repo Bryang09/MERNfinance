@@ -1,0 +1,58 @@
+select,
+select option {
+  text-transform: capitalize;
+}
+.results {
+  h5 {
+    display: flex;
+  }
+}
+.svg-container {
+  display: flex;
+  padding-right: 5px;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    margin: 0 5px;
+    cursor: pointer;
+    transition: 0.4s ease;
+
+    &:hover {
+      fill: #35ffc6;
+    }
+  }
+}
+
+.edit {
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  background: #010101;
+  height: 80vh;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.edit-form {
+  form {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-top: 5vh;
+    }
+  }
+}
+
+#close {
+  padding: 5px;
+  margin-top: 2vh;
+  border: 1px solid #ff2fdb;
+
+  &:hover {
+    background: #ff2fdb;
+  }
+}

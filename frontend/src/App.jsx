@@ -10,6 +10,8 @@ import DemoInvestments from "./pages/Demo/DemoInvestments";
 import DemoDebts from "./pages/Demo/DemoDebts";
 import Signup from "./pages/Signup";
 import AppHome from "./pages/app/AppHome";
+import Transactions from "./pages/app/Transactions";
+import Investments from "./pages/app/Investments";
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
 
         {/*  */}
         <Route path="/signup" element={<Signup />} />
-        <Route path="/home/:id" element={<AppHome />} />
+        <Route path="/overview" element={<AppHome />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/investments" element={<Investments />} />
       </Routes>
     </>
   );

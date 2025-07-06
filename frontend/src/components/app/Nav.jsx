@@ -1,10 +1,10 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineClose } from "react-icons/md";
 
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function Nav() {
+  const user = localStorage.getItem("user");
   return (
     <>
       <span className="mobile">
@@ -23,19 +23,19 @@ function Nav() {
         </NavLink>
         <nav>
           <ul>
-            <NavLink to="/demo" end>
+            <NavLink to="/overview">
               <li>Overview</li>
             </NavLink>
-            <NavLink to="/demo/transactions">
+            <NavLink to={`/transactions`}>
               <li>Transactions</li>
             </NavLink>
-            <NavLink to="/demo/investments">
+            <NavLink to="/investments">
               <li>Investments</li>
             </NavLink>
-            <NavLink to="/demo/debts">
+            <NavLink to="/debts">
               <li>Debts</li>
             </NavLink>
-            <NavLink>
+            <NavLink to="settings">
               <li>Settings</li>
             </NavLink>
           </ul>

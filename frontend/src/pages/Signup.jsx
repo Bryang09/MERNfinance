@@ -43,8 +43,9 @@ function Signup() {
 
     try {
       localStorage.setItem("token", json.token);
+      localStorage.setItem("user", json.user._id);
       console.log(json.user);
-      navigate(`/home/${json.user._id}`);
+      navigate(`/overview`);
     } catch (error) {
       console.log(error);
       console.log(json.user);

@@ -52,7 +52,7 @@ router.delete("/user/:id", deleteUser);
 
 // INVESTMENTS
 // Add Investment
-router.put("/user/investments/:id", addInvestment);
+router.put("/user/:id/investments/", addInvestment);
 // Update Investment
 router.put("/user/:id/investments/:investmentId", updateInvestment);
 // Get Investments
