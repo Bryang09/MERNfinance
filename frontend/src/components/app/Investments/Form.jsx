@@ -12,7 +12,7 @@ function Form(props) {
     recurring,
     isRecurring,
     handleNewAccount,
-    setInvestmentId,
+    handleUpdateAccount,
   } = props;
 
   const accounts = investments &&
@@ -20,33 +20,44 @@ function Form(props) {
       ...new Set(investments.map((item) => item.account_name)),
     ];
 
+  console.log(accounts);
+  const handleAmount = (e) => {
+    if (accountName === "other" && recurring) {
+      setMonthlyInvestment(e.target.value), setInitialAmount(e.target.value);
+      console.log("first condition");
+      // console.log()
+    } else if (accountName === "other") {
+      setInitialAmount(e.target.value);
+      console.log("second condition");
+    }
+  };
   return (
     <div className="form-container">
       <div className="form">
         <h3>Add Investment</h3>
-        {/* <form onSubmit={ accountName == 'other' ? handleNewAccount : handleSubmit }> */}
-        <form onSubmit={handleNewAccount}>
+        <form
+          onSubmit={
+            accountName == "other" ? handleNewAccount : handleUpdateAccount
+          }
+        >
+          {/* <form onSubmit={  handleNewAccount}> */}
           <span className="input-container">
             <label htmlFor="type">Type</label>
             <select
               name="type"
               id="type"
-              value={""}
               onChange={(e) => setAccountName(e.target.value)}
+              defaultValue=""
             >
               <option value="" disabled>
                 Select Type
               </option>
               {investments.length > 0 ? (
                 <>
-                  {investments.map((investment) => {
+                  {accounts.map((investment) => {
                     return (
-                      <option
-                        value={investment._id}
-                        key={investment._id}
-                        onChange={() => setInvestmentId(investment._id)}
-                      >
-                        {investment.account_name}
+                      <option value={investment} key={investment}>
+                        {investment}
                       </option>
                     );
                   })}
@@ -70,17 +81,15 @@ function Form(props) {
               />
             </span>
           )}
-          <span className="input-container"></span>
           <span className="input-container">
-            <label htmlFor="debtAmount">Amount</label>
+            <label htmlFor="investmentAmount">Amount</label>
             <input
               type="number"
-              id="debtAmount"
+              id="investmentAmount"
               required
-              name="debtAmount"
+              name="investmentAmount"
               onChange={(e) => {
-                setMonthlyInvestment(e.target.value),
-                  setInitialAmount(e.target.value);
+                handleAmount(e);
               }}
             />
           </span>
@@ -90,7 +99,6 @@ function Form(props) {
               type="checkbox"
               id="recurring"
               name="recurring"
-              required
               onChange={() => isRecurring(!recurring)}
             />
           </span>

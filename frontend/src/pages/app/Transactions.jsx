@@ -3,9 +3,7 @@ import Nav from "../../components/app/Nav";
 
 import "../../styles/app/transactions.scss";
 import AddTransaction from "../../components/app/Transactions/AddTransactions";
-
-import { CiEdit } from "react-icons/ci";
-import { MdDelete } from "react-icons/md";
+import ShowTransactions from "../../components/app/Transactions/ShowTransactions";
 
 function Transactions() {
   const id = localStorage.getItem("user");
@@ -63,14 +61,10 @@ function Transactions() {
       setCategory("");
       setAccount("");
       setNewAccount("");
-      console.log(transactions);
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(`account: ${account}`);
-  console.log(`new account: ${newAccount}`);
 
   const accounts = transactions &&
     transactions.length > 0 && [
@@ -98,9 +92,13 @@ function Transactions() {
     const account =
       editAccountName === "other"
         ? editNewAccount
-        : editAccountName !== "other"
+        : editAccountName.length > 0
         ? editAccountName
         : editAccount.account;
+
+    console.log(editAccountName);
+    console.log(editNewAccount);
+    console.log(editAccount.account);
 
     const response = await fetch(
       `/api/user/${id}/transactions/${editAccount._id}`,
@@ -148,6 +146,8 @@ function Transactions() {
     }
   };
 
+  console.log(editAccount);
+
   return (
     <>
       <Nav />
@@ -165,87 +165,20 @@ function Transactions() {
             setNewAccount={setNewAccount}
           />
           <div className="container">
-            <div className="show-transactions-container">
-              <h3>Wants</h3>
-              <div className="show-transactions">
-                <div className="headers">
-                  <h4>Transaction Name</h4>
-                  <h4>Transaction Amount</h4>
-                  <h4>Category</h4>
-                  <h4>Account</h4>
-                </div>
-                {transactions.length > 0 &&
-                  transactions
-                    .filter((a) => a.category === "wants")
-                    .map((transaction) => {
-                      wantsTotal += transaction.amount;
-                      return (
-                        <div className="results" key={transaction._id}>
-                          <h5>{transaction.name}</h5>
-                          <h5>{formatter.format(transaction.amount)}</h5>
-                          <h5>{transaction.category}</h5>
-                          <h5>
-                            {transaction.account}
-                            <span className="svg-container">
-                              <CiEdit
-                                onClick={() => editHandler(transaction)}
-                              />
-
-                              <MdDelete
-                                onClick={() => handleDelete(transaction)}
-                              />
-                            </span>
-                          </h5>
-                        </div>
-                      );
-                    })}
-              </div>
-              {wantsTotal > 0 && (
-                <div className="results">
-                  <h5>Total</h5>
-                  <h5>{formatter.format(wantsTotal)}</h5>
-                </div>
-              )}
-            </div>
-            <div className="show-transactions-container">
-              <h3>Needs</h3>
-              <div className="show-transactions">
-                <div className="headers">
-                  <h4>Transaction Name</h4>
-                  <h4>Transaction Amount</h4>
-                  <h4>Category</h4>
-                  <h4>Account</h4>
-                </div>
-                {transactions.length > 0 &&
-                  transactions
-                    .filter((a) => a.category === "needs")
-                    .map((transaction) => {
-                      needsTotal += transaction.amount;
-                      return (
-                        <div className="results" key={transaction._id}>
-                          <h5>{transaction.name}</h5>
-                          <h5>{formatter.format(transaction.amount)}</h5>
-                          <h5>{transaction.category}</h5>
-                          <h5>
-                            {transaction.account}{" "}
-                            <span className="svg-container">
-                              <CiEdit
-                                onClick={() => editHandler(transaction)}
-                              />
-                              <MdDelete />
-                            </span>
-                          </h5>
-                        </div>
-                      );
-                    })}
-                {needsTotal > 0 && (
-                  <div className="results">
-                    <h5>Total</h5>
-                    <h5>{formatter.format(needsTotal)}</h5>
-                  </div>
-                )}
-              </div>
-            </div>
+            <ShowTransactions
+              transactions={transactions}
+              total={wantsTotal}
+              type="wants"
+              editHandler={editHandler}
+              handleDelete={handleDelete}
+            />
+            <ShowTransactions
+              transactions={transactions}
+              total={needsTotal}
+              type="needs"
+              editHandler={editHandler}
+              handleDelete={handleDelete}
+            />
           </div>
         </div>
       </div>
@@ -267,6 +200,8 @@ function Transactions() {
                 <label htmlFor="amount">Amount</label>
                 <input
                   type="number"
+                  name="amount"
+                  id="amount"
                   defaultValue={editAccount.amount}
                   onChange={(e) => setEditAmount(e.target.value)}
                 />
@@ -299,13 +234,18 @@ function Transactions() {
                     Select Account
                   </option>
                   {accounts.map((account) => {
-                    return <option value={account}>{account}</option>;
+                    console.log(account);
+                    return (
+                      <option value={account} key={account}>
+                        {account}
+                      </option>
+                    );
                   })}
                   <option value="other">Other</option>
                 </select>
                 {editAccountName === "other" && (
                   <span>
-                    <label htmlFor="editNewAccount">New Account Name</label>
+                    <label htmlFor="editAccountName">New Account Name</label>
                     <input
                       type="text"
                       id="editAccountName"
