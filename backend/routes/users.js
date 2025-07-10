@@ -15,6 +15,7 @@ const {
   updateInvestment,
   getInvestments,
   deleteInvestment,
+  changeInvestment,
 } = require("../controllers/investmentsController");
 
 const {
@@ -55,6 +56,8 @@ router.delete("/user/:id", deleteUser);
 router.put("/user/:id/investments/", addInvestment);
 // Update Investment
 router.put("/user/:id/investments/:investmentId", updateInvestment);
+// Change Investment
+router.patch("/user/:id/investments/:investmentId", changeInvestment);
 // Get Investments
 router.get("/user/:id/investments", getInvestments);
 // Delete Investment

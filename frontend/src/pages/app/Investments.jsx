@@ -5,6 +5,8 @@ import Nav from "../../components/app/Nav";
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 
+import "../../styles/app/investments.scss";
+
 function Investments() {
   const id = localStorage.getItem("user");
 
@@ -19,8 +21,8 @@ function Investments() {
   const [editAccount, setEditAccount] = useState(null);
   const [editName, setEditName] = useState("");
   const [editAmount, setEditAmount] = useState(0);
-  const [editCategory, setEditCategory] = useState("");
-  const [editAccountName, setEditAccountName] = useState("");
+  const [editMonthly, setEditMonthly] = useState(0);
+
   const [editNewAccount, setEditNewAccount] = useState("");
 
   useEffect(() => {
@@ -33,7 +35,6 @@ function Investments() {
       try {
         const json = await response.json();
         setInvestments(json);
-        // console.log(json);
       } catch (error) {
         console.log(error);
       }
@@ -44,8 +45,6 @@ function Investments() {
   const handleUpdateAccount = async (e) => {
     e.preventDefault();
 
-    console.log(accountName);
-
     const check = investments.filter((investment) => {
       if (investment.account_name === accountName) {
         return investment;
@@ -53,10 +52,9 @@ function Investments() {
     });
 
     const investmentId = check[0]._id;
-    console.log(check);
 
+    console.log(monthly_investment);
     console.log(amountInvested);
-
     const response = await fetch(
       `/api/user/${id}/investments/${investmentId}`,
       {
@@ -64,14 +62,15 @@ function Investments() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           account_name: accountName !== "other" ? accountName : newAccount,
-          initial_amount: initialAmount,
-          amount_invested: amountInvested,
-          monthly_investment: recurring,
+          amount_invested: parseInt(amountInvested),
+          monthly_investment: recurring ? amountInvested : 0,
         }),
       }
     );
     try {
       const json = await response.json();
+      setInvestments(json);
+      console.log(response);
       console.log(json);
     } catch (error) {
       console.log(error);
@@ -93,6 +92,8 @@ function Investments() {
     try {
       const json = await response.json();
       setInvestments(json);
+      setAccountName("");
+      console.log(json);
       e.target.reset();
     } catch (error) {
       console.log(error);
@@ -110,44 +111,24 @@ function Investments() {
 
   const handleEdit = async (e) => {
     e.preventDefault();
-    const name = editName.length > 0 ? editName : editAccount.name;
-    const amount = editAmount > 0 ? editAmount : editAccount.amount;
-    const category =
-      editCategory.length > 0 ? editCategory : editAccount.category;
-    const account =
-      editAccountName === "other"
-        ? editNewAccount
-        : editAccountName.length > 0
-        ? editAccountName
-        : editAccount.account;
-
-    console.log(editAccountName);
-    console.log(editNewAccount);
-    console.log(editAccount.account);
-
     const response = await fetch(
-      `/api/user/${id}/transactions/${editAccount._id}`,
+      `/api/user/${id}/investments/${editAccount._id}`,
       {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name,
-          amount: amount,
-          category: category,
-          account: account,
+          amount_invested: editAmount,
+          monthly_investment:
+            editMonthly > 0 ? editMonthly : editAccount.monthly_investment,
         }),
       }
     );
+    console.log(editAmount);
     try {
-      console.log(response);
       const json = await response.json();
-      setTransactions(json.transactions);
+      setInvestments(json);
       setEditAccount(null);
-      setEditName("");
-      setEditAmount(0);
-      setEditCategory("");
-      setEditAccountName("");
-      setEditNewAccount("");
+      console.log(json);
     } catch (error) {
       console.log(error);
     }
@@ -171,6 +152,7 @@ function Investments() {
     }
   };
 
+  console.log(investments);
   return (
     <>
       <Nav />
@@ -205,7 +187,7 @@ function Investments() {
                 investment.initial_amount) *
               100;
             return (
-              <div className="results" key={investment._id}>
+              <div className="results investments_results" key={investment._id}>
                 <h4>{investment.account_name}</h4>
                 <h4>{formatter.format(investment.amount_invested)}</h4>
                 <h4>{formatter.format(investment.monthly_investment)}</h4>
@@ -218,7 +200,7 @@ function Investments() {
                       : "neutral"
                   }
                 >
-                  {percent}%
+                  {percent.toFixed(2)}%
                   <span className="svg-container">
                     <CiEdit onClick={() => editHandler(investment)} />
 
@@ -229,6 +211,47 @@ function Investments() {
             );
           })}
         </div>
+        {editAccount && (
+          <div className="edit">
+            <h1>Edit Investment</h1>
+            <div className="edit-form">
+              <form onSubmit={handleEdit}>
+                <span>
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder={editAccount.account_name}
+                    defaultValue={editAccount.account_name}
+                    disabled={true}
+                    className="disabled_input"
+                  />
+                </span>
+                <span>
+                  <label htmlFor="amount">Account Balance</label>
+                  <input
+                    type="number"
+                    name="amount"
+                    defaultValue={editAccount.amount_invested}
+                    onChange={(e) => setEditAmount(e.target.value)}
+                  />
+                </span>
+                <span>
+                  <label htmlFor="monthly">Monthly Investment</label>
+                  <input
+                    type="number"
+                    name="monthly"
+                    defaultValue={editAccount.monthly_investment}
+                    onChange={(e) => setEditMonthly(e.target.value)}
+                  />
+                </span>
+
+                <button>Submit</button>
+                <button onClick={() => setEditAccount(null)}>Cancel</button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

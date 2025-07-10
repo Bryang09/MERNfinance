@@ -21,14 +21,14 @@ function Form(props) {
     ];
 
   console.log(accounts);
+
   const handleAmount = (e) => {
-    if (accountName === "other" && recurring) {
-      setMonthlyInvestment(e.target.value), setInitialAmount(e.target.value);
-      console.log("first condition");
-      // console.log()
-    } else if (accountName === "other") {
+    if (accountName === "other") {
       setInitialAmount(e.target.value);
+      f;
       console.log("second condition");
+    } else if (accountName !== "other") {
+      setAmountInvested(e.target.value);
     }
   };
   return (

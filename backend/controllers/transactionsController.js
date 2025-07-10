@@ -43,7 +43,7 @@ const getTransactions = async (req, res) => {
   }
 };
 
-// Edit Transaction Amount
+// Edit Transaction
 
 const editTransaction = async (req, res) => {
   const { id, transactionId } = req.params;

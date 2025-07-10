@@ -1,0 +1,19 @@
+.investments_results {
+  h4 {
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    .svg-container {
+      padding-left: 5px;
+      svg {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.disabled_input {
+  cursor: not-allowed;
+  background-color: gray;
+}

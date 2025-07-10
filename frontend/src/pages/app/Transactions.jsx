@@ -114,7 +114,6 @@ function Transactions() {
       }
     );
     try {
-      console.log(response);
       const json = await response.json();
       setTransactions(json.transactions);
       setEditAccount(null);
@@ -140,13 +139,10 @@ function Transactions() {
     try {
       const json = await response.json();
       setTransactions(json.transactions);
-      console.log(json);
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(editAccount);
 
   return (
     <>
@@ -191,6 +187,7 @@ function Transactions() {
                 <label htmlFor="name">Transaction Name</label>
                 <input
                   type="text"
+                  name="name"
                   placeholder={editAccount.name}
                   defaultValue={editAccount.name}
                   onChange={(e) => setEditName(e.target.value)}

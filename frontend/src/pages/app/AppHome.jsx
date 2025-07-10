@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Nav from "../../components/app/Nav";
 import { useEffect, useState } from "react";
 import Allocations from "../../components/app/Home/Allocations";
@@ -45,6 +45,7 @@ function AppHome() {
             </div>
             <div className="overview">
               <h2>Account Overview</h2>
+
               <div className="overview-section">
                 <h3>Debts</h3>
 
@@ -73,19 +74,22 @@ function AppHome() {
                 )}
               </div>
               <div className="overview-section">
-                <h3>Investments</h3>
+                <Link to="/investments">
+                  <h3>Investments</h3>
+                </Link>
+
                 {user.investments.length > 0 ? (
                   <div className="section debt-section">
                     <div className="result-headers">
                       <h5>Account Name</h5>
                       <h5>Balance</h5>
                       <h5>Percent Change</h5>
-                      <h5>Weekly Investment</h5>
-                      <h5>52 Weeks</h5>
+                      <h5>Monthly Investment</h5>
+                      <h5>Yearly</h5>
                     </div>
                     {user.investments.map((investment) => {
                       investmentBalance += investment.amount_invested;
-                      weeklyInvestemnt += investment.monthly_investment / 4;
+                      weeklyInvestemnt += investment.monthly_investment;
                       yearlyInvestment += investment.monthly_investment * 12;
 
                       const percentage =
@@ -105,11 +109,19 @@ function AppHome() {
                           <h5>
                             {formatter.format(investment.amount_invested)}
                           </h5>
-                          <h5>{percentage}%</h5>
+                          <h5
+                            className={
+                              percentage > 0
+                                ? "positive"
+                                : percentage === 0
+                                ? "neutral"
+                                : "negative"
+                            }
+                          >
+                            {percentage.toFixed(2)}%
+                          </h5>
                           <h5>
-                            {formatter.format(
-                              investment.monthly_investment / 4
-                            )}
+                            {formatter.format(investment.monthly_investment)}
                           </h5>
                           <h5>{yearly}</h5>
                         </div>
@@ -120,9 +132,10 @@ function AppHome() {
                   <div className="empty-section empty-investments">
                     <h2>Investments Will Appear Here</h2>
                     <span>
-                      <a href="">
+                      <Link to="/investments">
                         <h4>Add Investments</h4>
-                      </a>
+                      </Link>
+                      <a href=""></a>
                     </span>
                   </div>
                 )}

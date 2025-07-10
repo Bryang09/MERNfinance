@@ -57,7 +57,7 @@ const getInvestments = async (req, res) => {
 // update investment
 const updateInvestment = async (req, res) => {
   const { id, investmentId } = req.params;
-  const { new_amount_invested } = req.body;
+  const { amount_invested, account_name, monthly_investment } = req.body;
   console.log(id, investmentId);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -79,7 +79,51 @@ const updateInvestment = async (req, res) => {
       { _id: id, "investments._id": investmentId },
       {
         $inc: {
-          "investments.$.amount_invested": new_amount_invested,
+          "investments.$.amount_invested": amount_invested,
+          "investments.$.monthly_investment": monthly_investment,
+        },
+        $set: {
+          "investments.$.account_name": account_name,
+        },
+      },
+      { new: true }
+    );
+
+    const sort = investment.investments.sort(
+      (a, b) => b.amount_invested - a.amount_invested
+    );
+
+    res.status(200).json(sort);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+const changeInvestment = async (req, res) => {
+  const { id, investmentId } = req.params;
+  const { amount_invested, monthly_investment } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Invalid User Id" });
+  }
+  if (!mongoose.Types.ObjectId.isValid(investmentId)) {
+    return res.status(400).json({ error: "Invalid Investment Id" });
+  }
+
+  try {
+    if (
+      await User.findOne({
+        _id: id,
+        "investments._id": investmentId,
+      })
+    ) {
+    }
+    const investment = await User.findOneAndUpdate(
+      { _id: id, "investments._id": investmentId },
+      {
+        $set: {
+          "investments.$.amount_invested": amount_invested,
+          "investments.$.monthly_investment": monthly_investment,
         },
       },
       { new: true }
@@ -122,5 +166,6 @@ module.exports = {
   addInvestment,
   getInvestments,
   updateInvestment,
+  changeInvestment,
   deleteInvestment,
 };

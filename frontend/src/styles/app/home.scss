@@ -25,3 +25,16 @@
     }
   }
 }
+
+.overview-section {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #35ffc6;
+    transition: 0.4s ease;
+
+    &:hover {
+      color: #12c794;
+    }
+  }
+}
