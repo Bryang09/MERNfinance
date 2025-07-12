@@ -1,6 +1,8 @@
 .headers {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  text-align: center;
   h1 {
   }
 }
@@ -43,4 +45,29 @@
 
 h5.active {
   background-color: #58bfff;
+}
+
+.containers {
+  display: flex;
+
+  div {
+    width: 30%;
+    margin: 10px auto;
+  }
+}
+
+.if-container {
+  text-align: center;
+}
+
+.interest {
+  border: 1px solid #5f30ff !important;
+
+  &:hover {
+    background: #5f30ff !important;
+  }
+}
+
+.active_rate {
+  background: #5f30ff;
 }
