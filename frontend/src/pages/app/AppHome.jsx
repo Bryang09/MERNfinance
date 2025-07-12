@@ -8,6 +8,7 @@ import "../../styles/app/home.scss";
 function AppHome() {
   const id = localStorage.getItem("user");
   const [user, setUser] = useState(null);
+  const [investments, setInvestments] = useState([]);
 
   useEffect(() => {
     const getUser = async () => {
@@ -17,6 +18,9 @@ function AppHome() {
       });
       const json = await response.json();
       setUser(json);
+      setInvestments(
+        json.investments.sort((a, b) => b.amount_invested - a.amount_invested)
+      );
     };
     getUser();
   }, []);
@@ -27,10 +31,12 @@ function AppHome() {
   });
 
   let investmentBalance = 0;
-  let weeklyInvestemnt = 0;
+  let monthlyInvestment = 0;
   let yearlyInvestment = 0;
 
   console.log(user);
+  console.log(investments);
+
   return (
     <>
       <Nav />
@@ -89,7 +95,7 @@ function AppHome() {
                     </div>
                     {user.investments.map((investment) => {
                       investmentBalance += investment.amount_invested;
-                      weeklyInvestemnt += investment.monthly_investment;
+                      monthlyInvestment += investment.monthly_investment;
                       yearlyInvestment += investment.monthly_investment * 12;
 
                       const percentage =
@@ -104,7 +110,10 @@ function AppHome() {
                       );
                       const yearly = formatter.format(yearlyAmount);
                       return (
-                        <div className="result debt-result">
+                        <div
+                          className="result debt-result"
+                          key={investment._id}
+                        >
                           <h5>{investment.account_name}</h5>
                           <h5>
                             {formatter.format(investment.amount_invested)}
@@ -139,15 +148,18 @@ function AppHome() {
                     </span>
                   </div>
                 )}
-                <div className="section">
-                  <div className="result debt-result">
-                    <h5>Total</h5>
-                    <h5>{formatter.format(investmentBalance)}</h5>
-                    <h5></h5>
-                    <h5>{formatter.format(weeklyInvestemnt)}</h5>
-                    <h5>{formatter.format(yearlyInvestment)}</h5>
+                {user.investments.length > 0 && (
+                  <div className="section">
+                    <div className="result debt-result">
+                      <h5>Total</h5>
+                      <h5>{formatter.format(investmentBalance)}</h5>
+                      <h5></h5>
+
+                      <h5>{formatter.format(monthlyInvestment)}</h5>
+                      <h5>{formatter.format(yearlyInvestment)}</h5>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

@@ -11,7 +11,8 @@ import DemoDebts from "./pages/Demo/DemoDebts";
 import Signup from "./pages/Signup";
 import AppHome from "./pages/app/AppHome";
 import Transactions from "./pages/app/Transactions";
-import Investments from "./pages/app/Investments";
+import Investments from "./pages/app/Investments/Investments";
+import Investment from "./pages/app/Investments/Investment";
 
 function App() {
   return (
@@ -27,7 +28,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/overview" element={<AppHome />} />
         <Route path="/transactions" element={<Transactions />} />
+
         <Route path="/investments" element={<Investments />} />
+        <Route path="/investments/:id" element={<Investment />} />
       </Routes>
     </>
   );

@@ -4,7 +4,7 @@ $accent: #35ffc6;
 .transactions-container {
   display: flex;
   // align-items: center;
-  background: #fff;
+  background: #1e1e1e;
   min-height: 100vh;
   flex-wrap: wrap;
   color: #333;
@@ -84,7 +84,7 @@ $accent: #35ffc6;
   margin: 0 5vw;
 
   .show-transactions-container {
-    background: #1e1e1e;
+    background: #131212;
     margin: 2vh 0;
     color: #fff;
     text-transform: capitalize;

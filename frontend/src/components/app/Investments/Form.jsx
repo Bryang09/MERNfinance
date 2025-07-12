@@ -40,7 +40,6 @@ function Form(props) {
             accountName == "other" ? handleNewAccount : handleUpdateAccount
           }
         >
-          {/* <form onSubmit={  handleNewAccount}> */}
           <span className="input-container">
             <label htmlFor="type">Type</label>
             <select
@@ -48,6 +47,7 @@ function Form(props) {
               id="type"
               onChange={(e) => setAccountName(e.target.value)}
               defaultValue=""
+              required={true}
             >
               <option value="" disabled>
                 Select Type

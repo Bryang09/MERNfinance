@@ -1,0 +1,46 @@
+.headers {
+  display: flex;
+  justify-content: center;
+  h1 {
+  }
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  //   border: 1px solid red;
+}
+
+.information {
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.buttons-container {
+  //   width: 30%;
+  display: flex;
+  justify-content: center;
+
+  h5 {
+    border: 1px solid #58bfff;
+    width: 100px;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s ease;
+    margin: 20px 10px;
+
+    &:hover {
+      background-color: #58bfff;
+    }
+  }
+}
+
+.chart-container {
+  width: 100%;
+}
+
+h5.active {
+  background-color: #58bfff;
+}
