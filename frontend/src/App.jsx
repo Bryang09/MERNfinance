@@ -13,6 +13,7 @@ import AppHome from "./pages/app/AppHome";
 import Transactions from "./pages/app/Transactions";
 import Investments from "./pages/app/Investments/Investments";
 import Investment from "./pages/app/Investments/Investment";
+import Debts from "./pages/app/Debts/Debts";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
 
         <Route path="/investments" element={<Investments />} />
         <Route path="/investments/:id" element={<Investment />} />
+
+        <Route path="debts" element={<Debts />} />
       </Routes>
     </>
   );

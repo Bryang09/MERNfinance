@@ -231,7 +231,7 @@ function Investment() {
       {load === true && onLoad()}
       {investment && (
         <div className="investment">
-          <div className="headers">
+          <div className="investment-headers">
             <h1>{investment.account_name}</h1>
             <h3>
               You are currently investing{" "}

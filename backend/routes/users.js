@@ -22,6 +22,7 @@ const {
   addDebts,
   getDebts,
   updateDebt,
+  editSnowball,
 } = require("../controllers/debtsController");
 
 const {
@@ -67,6 +68,7 @@ router.delete("/user/:id/investments/:investmentId", deleteInvestment);
 router.put("/user/:id/debts", addDebts);
 router.put("/user/:id/debts/:debtId", updateDebt);
 router.get("/user/:id/debts", getDebts);
+router.put("/user/:id/snowball", editSnowball);
 
 // SAVINGS
 router.post("/user/:id/savings", addSavings);

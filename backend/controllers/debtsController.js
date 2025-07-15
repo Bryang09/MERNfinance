@@ -75,10 +75,11 @@ const getDebts = async (req, res) => {
     return res.status(400).json({ error: "Invalid User Id" });
   }
   try {
-    const debts = await User.findOne({ _id: id }).select("debts");
-    const sort = debts.debts.sort((a, b) => a.balance - b.balance);
+    const debts = await User.findOne({ _id: id }).select("debts snowball");
+    const debt = debts.debts.sort((a, b) => a.balance - b.balance);
+    const snowball = debts.snowball;
 
-    res.status(200).json(sort);
+    res.status(200).json({ debt, snowball });
   } catch (err) {
     res.status(400).json({
       error: err.message,
@@ -86,8 +87,38 @@ const getDebts = async (req, res) => {
   }
 };
 
+// edit snowball
+
+const editSnowball = async (req, res) => {
+  const { id } = req.params;
+  const { amount } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "Invalid User Id" });
+  }
+
+  try {
+    const snowball = await User.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        $inc: {
+          snowball: amount,
+        },
+      },
+      { new: true }
+    );
+
+    res.status(200).json(snowball);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
   addDebts,
   getDebts,
   updateDebt,
+  editSnowball,
 };
